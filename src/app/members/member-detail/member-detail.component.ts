@@ -4,13 +4,13 @@ import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-member-list',
-  templateUrl: './member-list.component.html',
-  styleUrls: ['./member-list.component.scss']
+  selector: 'app-member-detail',
+  templateUrl: './member-detail.component.html',
+  styleUrls: ['./member-detail.component.scss']
 })
-export class MemberListComponent implements OnInit {
+export class MemberDetailComponent implements OnInit {
 
-  users: User[];
+  user: User;
 
   constructor(
     private _userService: UserService,
@@ -18,7 +18,8 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit() {
     this._route.data.subscribe(data => {
-      this.users = data['users'];
+      this.user = data['user'];
     });
   }
+
 }

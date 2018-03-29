@@ -18,7 +18,9 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { AuthGuard } from './guards/auth.guard';
 import { UserService } from './services/user.service';
 import { MemberCardComponent } from './members/member-card/member-card.component';
-
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberDetailResolver } from './resolvers/member-detail.resolver';
+import { MemberListResolver } from './resolvers/member-list.resolver';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     MemberListComponent,
     FollowersComponent,
     MessagesComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,8 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     AuthService,
     UserService,
     AuthGuard,
+    MemberDetailResolver,
+    MemberListResolver,
   ],
   bootstrap: [AppComponent]
 })

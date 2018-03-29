@@ -18,8 +18,15 @@ export class UserService {
     private _jwtHelperService: JwtHelperService) { }
 
   getUsers(): Observable<User[]> {
-    return this._http.get<User[]>(this.baseUrl + 'users', { headers: new HttpHeaders()
-      .set('Authorization', `Bearer ` + this._authService.decodedToken) });
+    return this._http.get<User[]>(this.baseUrl + 'users', {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ` + this._authService.decodedToken)
+    });
+  }
+
+  getUser(id): Observable<User> {
+    return this._http
+      .get<User>(this.baseUrl + 'users/' + id);
   }
 
 }
