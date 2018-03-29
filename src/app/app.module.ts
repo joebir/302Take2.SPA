@@ -22,6 +22,8 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './resolvers/member-detail.resolver';
 import { MemberListResolver } from './resolvers/member-list.resolver';
+import { ErrorInterceptorProvider } from './services/error.interceptor';
+import { AlertifyService } from './services/alertify.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { MemberListResolver } from './resolvers/member-list.resolver';
     AuthGuard,
     MemberDetailResolver,
     MemberListResolver,
+    ErrorInterceptorProvider,
+    AlertifyService,
   ],
   bootstrap: [AppComponent]
 })
