@@ -17,6 +17,7 @@ import { appRoutes } from './routes';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { AuthGuard } from './guards/auth.guard';
 import { UserService } from './services/user.service';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UserService } from './services/user.service';
     RegisterComponent,
     MemberListComponent,
     FollowersComponent,
-    MessagesComponent
+    MessagesComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,
