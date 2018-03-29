@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -14,7 +15,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { FollowersComponent } from './followers/followers.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { AuthGuard } from './guards/auth.guard';
 import { UserService } from './services/user.service';
 import { MemberCardComponent } from './members/member-card/member-card.component';
@@ -38,8 +39,10 @@ import { MemberListResolver } from './resolvers/member-list.resolver';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgxGalleryModule,
     RouterModule.forRoot(appRoutes),
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
