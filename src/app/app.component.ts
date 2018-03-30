@@ -11,7 +11,7 @@ import { User } from './models/User';
 export class AppComponent implements OnInit {
   constructor(
     private _authService: AuthService,
-    private _jwtHelperService: JwtHelperService) {}
+    private _jwtHelperService: JwtHelperService) { }
 
   ngOnInit() {
     const token = localStorage.getItem('token');
@@ -19,6 +19,11 @@ export class AppComponent implements OnInit {
 
     if (token) {
       this._authService.decodedToken = this._jwtHelperService.decodeToken(token);
+    }
+
+    if (user) {
+      this._authService.currentUser = user;
+      this._authService.changeMemberPhoto(user.photoUrl);
     }
   }
 }

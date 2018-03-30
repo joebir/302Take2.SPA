@@ -10,6 +10,7 @@ import { AlertifyService } from '../services/alertify.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  photoUrl: string;
 
   constructor(
     public authService: AuthService,
@@ -17,6 +18,7 @@ export class NavComponent implements OnInit {
     private _alertify: AlertifyService) { }
 
   ngOnInit() {
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   login() {
@@ -31,7 +33,9 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.authService.userToken = null;
+    this.authService.currentUser = null;
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this._alertify.success('Logged out');
     this._router.navigate(['/home']);
   }
