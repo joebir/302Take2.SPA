@@ -29,4 +29,7 @@ export class UserService {
       .get<User>(this.baseUrl + 'users/' + id);
   }
 
+  updateUser(id: number, user: User) {
+    return this._http.put(this.baseUrl + 'users/' + id, user);
+  }
 }

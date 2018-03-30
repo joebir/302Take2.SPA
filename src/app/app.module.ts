@@ -24,6 +24,9 @@ import { MemberDetailResolver } from './resolvers/member-detail.resolver';
 import { MemberListResolver } from './resolvers/member-list.resolver';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
 import { AlertifyService } from './services/alertify.service';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './resolvers/member-edit.resolver';
+import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import { AlertifyService } from './services/alertify.service';
     FollowersComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +66,8 @@ import { AlertifyService } from './services/alertify.service';
     MemberListResolver,
     ErrorInterceptorProvider,
     AlertifyService,
+    MemberEditResolver,
+    PreventUnsavedChanges,
   ],
   bootstrap: [AppComponent]
 })
