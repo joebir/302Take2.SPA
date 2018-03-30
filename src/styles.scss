@@ -1,11 +1,12 @@
 $red: #D9514E;
 $cyan: #86BAD3;
-
+$orange: #f79569;
 $text: #3e3e3e;
 
 $theme-colors: (
     "primary": $red,
-    "secondary": $cyan
+    "secondary": $cyan,
+    "warning": $orange
 );
 
 @import "~bootstrap/scss/bootstrap";

@@ -26,16 +26,16 @@
           </div>
         </div>
         <div class="card-footer">
-            <div class="btn-group d-flex" role="group">
-              <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-primary btn-block">Save Changes</button>
-            </div>
+          <div class="btn-group d-flex" role="group">
+            <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-primary btn-block">Save Changes</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
       <div [hidden]="!editForm.dirty" class="alert alert-info text-center">
         <p>You have made changes. Any unsaved changes will be lost!</p>
-    </div>
+      </div>
       <div class="tab-panel">
         <tabset class="member-tabset" #memberTabs>
           <tab heading="Edit Profile">
@@ -48,15 +48,15 @@
               <textarea name="interests" rows="6" class="form-control" [(ngModel)]="user.interests"></textarea>
               <h4>Location:</h4>
               <div class="form-inline">
-                  <label for="city">City:</label>
-                  <input class="form-control" type="text" name="city" [(ngModel)]="user.city">
-                  <label for="city">State:</label>
-                  <input class="form-control" type="text" name="state" [(ngModel)]="user.state">
+                <label for="city">City:</label>
+                <input class="form-control" type="text" name="city" [(ngModel)]="user.city">
+                <label for="city">State:</label>
+                <input class="form-control" type="text" name="state" [(ngModel)]="user.state">
               </div>
             </form>
           </tab>
           <tab heading="Edit Photos">
-            <p>Edit photos will go here.</p>
+            <app-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)"></app-photo-editor>
           </tab>
         </tabset>
       </div>
