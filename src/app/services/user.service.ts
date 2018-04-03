@@ -18,7 +18,7 @@ export class UserService {
     private _authService: AuthService,
     private _jwtHelperService: JwtHelperService) { }
 
-  getUsers(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<User[]>> {
+  getUsers(page?, itemsPerPage?, userParams?, followParam?): Observable<PaginatedResult<User[]>> {
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
     let params = new HttpParams();
 
@@ -30,7 +30,15 @@ export class UserService {
     if (userParams != null) {
       params = params.append('specialty', userParams.specialty);
       params = params.append('orderBy', userParams.orderBy);
-  }
+    }
+
+    if (followParam === 'Followers') {
+      params = params.append('Followers', 'true');
+    }
+
+    if (followParam === 'Followees') {
+      params = params.append('Followees', 'true');
+    }
 
     return this._http
       .get<User[]>(this.baseUrl + 'users', { observe: 'response', params })
@@ -60,5 +68,9 @@ export class UserService {
 
   deletePhoto(userId: number, id: number) {
     return this._http.delete(this.baseUrl + 'users/' + userId + '/photos/' + id);
+  }
+
+  followUser(id: number, recipientId: number) {
+    return this._http.post(this.baseUrl + 'users/' + id + '/follow/' + recipientId, {});
   }
 }
