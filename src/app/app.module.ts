@@ -16,7 +16,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { FollowersComponent } from './followers/followers.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
-import { BsDropdownModule, TabsModule, PaginationModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 import { AuthGuard } from './guards/auth.guard';
 import { UserService } from './services/user.service';
 import { MemberCardComponent } from './members/member-card/member-card.component';
@@ -55,6 +55,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

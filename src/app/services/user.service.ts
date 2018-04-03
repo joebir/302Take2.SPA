@@ -18,7 +18,7 @@ export class UserService {
     private _authService: AuthService,
     private _jwtHelperService: JwtHelperService) { }
 
-  getUsers(page?, itemsPerPage?): Observable<PaginatedResult<User[]>> {
+  getUsers(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<User[]>> {
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
     let params = new HttpParams();
 
@@ -26,6 +26,11 @@ export class UserService {
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
     }
+
+    if (userParams != null) {
+      params = params.append('specialty', userParams.specialty);
+      params = params.append('orderBy', userParams.orderBy);
+  }
 
     return this._http
       .get<User[]>(this.baseUrl + 'users', { observe: 'response', params })

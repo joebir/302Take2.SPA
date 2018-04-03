@@ -1,22 +1,27 @@
 <div class="container">
   <div class="row">
+    <div class="btn-group mt-3" role="group">
+      <button type="button" name="specialty" btnRadio="all" [(ngModel)]="userParams.specialty" (click)="loadUsers()" class="btn btn-secondary">All</button>
+      <button type="button" name="specialty" btnRadio="front" [(ngModel)]="userParams.specialty" (click)="loadUsers()" class="btn btn-secondary">Front-end</button>
+      <button type="button" name="specialty" btnRadio="back" [(ngModel)]="userParams.specialty" (click)="loadUsers()" class="btn btn-secondary">Back-end</button>
+      <button type="button" name="specialty" btnRadio="full" [(ngModel)]="userParams.specialty" (click)="loadUsers()" class="btn btn-secondary">Full-stack</button>
+    </div>
+  </div>
+  <div class="btn-group mt-3 ml-auto" role="group">
+    <button type="button" name="orderBy" btnRadio="lastActive" [(ngModel)]="userParams.orderBy" (click)="loadUsers()" class="btn btn-secondary">Last Active</button>
+    <button type="button" name="orderBy" btnRadio="created" [(ngModel)]="userParams.orderBy" (click)="loadUsers()" class="btn btn-secondary">Newest</button>
+  </div>
+
+  <div class="row">
     <div *ngFor="let user of users" id="card" class="col-xl-2 col-lg-3 col-md-6">
       <app-member-card [user]="user"></app-member-card>
     </div>
   </div>
 
   <div class="row d-flex justify-content-center">
-    <pagination
-    [boundaryLinks]="true"
-    [totalItems]="pagination.totalItems"
-    [itemsPerPage]="pagination.itemsPerPage"
-    [(ngModel)]="pagination.currentPage"
-    class="pagination-sm"
-    (pageChanged)="pageChanged($event)"
-    previousText="&lsaquo;"
-    nextText="&rsaquo;"
-    firstText="&laquo;"
-    lastText="&raquo;"></pagination>
+    <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
+      class="pagination-sm" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+      lastText="&raquo;"></pagination>
   </div>
 
 </div>
