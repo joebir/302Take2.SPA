@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { PaginatedResult } from '../models/pagination';
+import { Message } from '../models/Message';
 
 
 @Injectable()
@@ -47,6 +48,29 @@ export class UserService {
 
         if (response.headers.get('pagination') != null) {
           paginatedResult.pagination = JSON.parse(response.headers.get('pagination'));
+        }
+
+        return paginatedResult;
+      });
+  }
+
+  getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
+    const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
+    let params = new HttpParams();
+
+    params = params.append('MessageContainer', messageContainer);
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+
+    return this._http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', { observe: 'response', params })
+      .map(response => {
+        paginatedResult.result = response.body;
+
+        if (response.headers.get('Pagination') != null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
         }
 
         return paginatedResult;

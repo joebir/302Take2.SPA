@@ -30,6 +30,7 @@ import { MemberEditResolver } from './resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FollowersResolver } from './resolvers/followers.resolver';
+import { MessagesResolver } from './resolvers/message.resolver';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { FollowersResolver } from './resolvers/followers.resolver';
     MemberEditResolver,
     PreventUnsavedChanges,
     FollowersResolver,
+    MessagesResolver,
   ],
   bootstrap: [AppComponent]
 })
