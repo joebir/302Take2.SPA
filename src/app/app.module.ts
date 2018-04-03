@@ -6,7 +6,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import { TimeAgoPipe } from 'time-ago-pipe';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthService } from './services/auth.service';
@@ -16,7 +16,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { FollowersComponent } from './followers/followers.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule } from 'ngx-bootstrap';
 import { AuthGuard } from './guards/auth.guard';
 import { UserService } from './services/user.service';
 import { MemberCardComponent } from './members/member-card/member-card.component';
@@ -42,7 +42,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TimeAgoPipe,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +54,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     RouterModule.forRoot(appRoutes),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    PaginationModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
