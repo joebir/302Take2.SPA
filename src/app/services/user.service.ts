@@ -7,7 +7,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { PaginatedResult } from '../models/pagination';
 import { Message } from '../models/Message';
-
+import 'rxjs/add/operator/do';
+import * as _ from 'underscore';
 
 @Injectable()
 export class UserService {
@@ -96,5 +97,21 @@ export class UserService {
 
   followUser(id: number, recipientId: number) {
     return this._http.post(this.baseUrl + 'users/' + id + '/follow/' + recipientId, {});
+  }
+
+  getMessageThread(id: number, recipientId: number) {
+    return this._http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId);
+  }
+
+  sendMessage(id: number, message: Message) {
+    return this._http.post<Message>(this.baseUrl + 'users/' + id + '/messages', message);
+  }
+
+  deleteMessage(id: number, userId: number) {
+    return this._http.post(this.baseUrl + 'users/' + userId + '/messages/' + id, {});
+  }
+
+  markAsRead(userId: number, messageId: number) {
+    return this._http.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId + '/read', {}).subscribe();
   }
 }

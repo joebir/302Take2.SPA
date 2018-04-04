@@ -31,6 +31,7 @@ import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FollowersResolver } from './resolvers/followers.resolver';
 import { MessagesResolver } from './resolvers/message.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MessagesResolver } from './resolvers/message.resolver';
     MemberEditComponent,
     PhotoEditorComponent,
     TimeAgoPipe,
+    MemberMessagesComponent,
   ],
   imports: [
     BrowserModule,
